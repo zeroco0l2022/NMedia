@@ -4,9 +4,9 @@
     <string name="post_author_avatar">Post author avatar</string>
     <string name="description_post_menu">Post menu</string>
     <string name="like_button">Like Button</string>
-    <string name="likes_count">10</string>
-    <string name="share_button">Share Button</string>
-    <string name="share_count">5</string>
-    <string name="views_count">5</string>
-    <string name="view_image">View Image</string>
+    <string name="likes_count" translatable="false">10</string>
+    <string name="share_button" translatable="false">Share Button</string>
+    <string name="share_count" translatable="false">5</string>
+    <string name="views_count" translatable="false">5</string>
+    <string name="view_image" translatable="false">View Image</string>
 </resources>
