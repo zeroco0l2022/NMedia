@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.data.Post
-import ru.netology.nmedia.service.DisplayNumber
+import ru.netology.nmedia.service.displayNumber
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity() {
             if (post.likedByMe) {
                 likeButton.setImageResource(R.drawable.baseline_favorite_24)
             }
-            likesCount.text = DisplayNumber(post.likes)
-            shareCount.text = DisplayNumber(post.shared)
-            viewsCount.text = DisplayNumber(post.views)
+            likesCount.text = displayNumber(post.likes)
+            shareCount.text = displayNumber(post.shared)
+            viewsCount.text = displayNumber(post.views)
+            
 
             root.setOnClickListener {
                 Log.d("stuff", "stuff")
@@ -50,13 +51,13 @@ class MainActivity : AppCompatActivity() {
                     if (post.likedByMe) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
                 )
                 if (post.likedByMe) post.likes++ else post.likes--
-                likesCount.text = DisplayNumber(post.likes)
+                likesCount.text = displayNumber(post.likes)
             }
 
             shareButton.setOnClickListener {
                 Log.d("stuff", "share")
                 post.shared++
-                shareCount.text = DisplayNumber(post.shared)
+                shareCount.text = displayNumber(post.shared)
             }
         }
     }

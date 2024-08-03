@@ -1,7 +1,7 @@
 package ru.netology.nmedia.service
 
 
-fun DisplayNumber(num: Int): String {
+fun displayNumber(num: Int): String {
     var numDelta: Float = (num / 100).toFloat() / 10
     var coef: String = "K"
     if (numDelta >= 1000) {
