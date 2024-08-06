@@ -5,4 +5,9 @@
     <string name="post_author_avatar">Аватар автора поста</string>
     <string name="description_post_menu">Меню поста</string>
     <string name="like_button">Кнопка лайка</string>
+    <string name="remove">Удалить</string>
+    <string name="post_text">Текст поста</string>
+    <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="edit">Изменить</string>
+    <string name="menu_edit">Редактирование</string>
 </resources>
