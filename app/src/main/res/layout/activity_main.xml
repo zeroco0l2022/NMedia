@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,11 +33,11 @@
         android:background="@android:color/transparent"
         android:padding="@dimen/common_spacing"
         android:importantForAutofill="no"
+        app:layout_constraintHeight_max="250dp"
         app:layout_constraintTop_toTopOf="@id/toolsTop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/save"
@@ -53,7 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/content"
         app:srcCompat="@drawable/baseline_check_circle_outline_24" />
-
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -73,8 +71,7 @@
         android:layout_marginStart="@dimen/common_spacing"
         app:layout_constraintBottom_toBottomOf="@id/toolsTop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTop"
-        />
+        app:layout_constraintTop_toBottomOf="@id/editTop" />
 
     <TextView
         android:id="@+id/edit_menu"
@@ -98,7 +95,7 @@
         android:text="@string/edit_text"
         app:layout_constraintBottom_toBottomOf="@id/toolsTop"
         app:layout_constraintStart_toEndOf="@id/editImage"
-        app:layout_constraintEnd_toStartOf="@id/cancel_button"/>
+        app:layout_constraintEnd_toStartOf="@id/cancel_button" />
 
     <ImageButton
         android:id="@+id/cancel_button"
@@ -119,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="editImage, edit_menu, editText, cancel_button"/>
+        app:constraint_referenced_ids="editImage, edit_menu, editText, cancel_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

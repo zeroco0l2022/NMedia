@@ -14,7 +14,6 @@ import ru.netology.nmedia.util.AndroidUtils
 import ru.netology.nmedia.data.Post
 
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,20 +47,20 @@ class MainActivity : AppCompatActivity() {
             if (post.id == 0) {
                 return@observe
             }
-           with(binding.editGroup) {
-               visibility = View.VISIBLE
-           }
-            with(binding.editText){
+            with(binding.editGroup) {
+                visibility = View.VISIBLE
+            }
+            with(binding.editText) {
                 text = post.content
             }
             with(binding.content) {
-               requestFocus()
+                requestFocus()
                 setText(post.content)
             }
 
 
         }
-        binding.cancelButton.setOnClickListener{
+        binding.cancelButton.setOnClickListener {
             with(binding.content) {
                 viewModel.save()
                 clearFocus()
