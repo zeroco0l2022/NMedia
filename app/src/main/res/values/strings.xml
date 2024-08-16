@@ -18,4 +18,8 @@
     <string name="menu_edit">Edit message</string>
     <string name="cancel" translatable="false">Cancel</string>
     <string name="edit_text" translatable="false">Edit Text</string>
+    <string name="chooser_share_post" translatable="false">Share post</string>
+    <string name="description_post_save">Save</string>
+    <string name="post_author">Post author</string>
+    <string name="video" translatable="false">Video</string>
 </resources>

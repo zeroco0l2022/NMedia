@@ -1,6 +1,7 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.ListAdapter
@@ -10,6 +11,7 @@ import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.service.displayNumber
 import androidx.recyclerview.widget.DiffUtil
+import androidx.transition.Visibility
 
 typealias OnLikeListener = (post: Post) -> Unit
 typealias OnShareListener = (post: Post) -> Unit
@@ -20,6 +22,7 @@ interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
+    fun onVideo(post: Post) {}
 }
 
 class PostsAdapter(
@@ -73,6 +76,14 @@ class PostViewHolder(
             }
             shareButton.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+            if (post.video != null) {
+                video.visibility = View.VISIBLE
+                video.setOnClickListener {
+                    onInteractionListener.onVideo(post)
+                }
+            } else {
+                video.visibility = View.GONE
             }
         }
     }
