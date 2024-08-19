@@ -40,7 +40,7 @@ class PostRepositoryFilesImpl(
     override fun getAll(): LiveData<List<Post>> = data
     override fun openPost(id: Int) {
         posts = posts.map {
-            if (it.id != id) it else it.copy(views = it.views+1)
+            if (it.id != id) it else it.copy(views = it.views + 1)
         }
         data.value = posts
     }
