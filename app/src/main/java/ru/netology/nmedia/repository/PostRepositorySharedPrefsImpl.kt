@@ -1,13 +1,11 @@
 package ru.netology.nmedia.repository
 
 import android.content.Context
-import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.data.Post
-import ru.netology.nmedia.repository.PostRepositoryFilesImpl.Companion
 
 class PostRepositorySharedPrefsImpl(
     context: Context
@@ -25,7 +23,8 @@ class PostRepositorySharedPrefsImpl(
 
     init {
         prefs.getString(KEY, null)?.let {
-            posts = PostRepositorySharedPrefsImpl.gson.fromJson(it, typeToken
+            posts = PostRepositorySharedPrefsImpl.gson.fromJson(
+                it, typeToken
             )
             nextId = (posts.maxOfOrNull { it.id } ?: 0) + 1
             data.value = posts
@@ -34,6 +33,12 @@ class PostRepositorySharedPrefsImpl(
 
 
     override fun getAll(): LiveData<List<Post>> = data
+    override fun openPost(id: Int) {
+        posts = posts.map {
+            if (it.id != id) it else it.copy(views = it.views+1)
+        }
+        data.value = posts
+    }
 
     override fun likeById(id: Int) {
         posts = posts.map {

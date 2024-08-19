@@ -4,14 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.data.Post
+import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.service.displayNumber
-import androidx.recyclerview.widget.DiffUtil
-import androidx.transition.Visibility
+import androidx.navigation.findNavController
 
 typealias OnLikeListener = (post: Post) -> Unit
 typealias OnShareListener = (post: Post) -> Unit
@@ -23,6 +24,7 @@ interface OnInteractionListener {
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
     fun onVideo(post: Post) {}
+    fun onOpenPost(post: Post) {}
 }
 
 class PostsAdapter(
@@ -51,6 +53,10 @@ class PostViewHolder(
             likeButton.isChecked = post.likedByMe
             likeButton.text = displayNumber(post.likes)
             shareButton.text = displayNumber(post.shared)
+            viewsCount.text = displayNumber(post.views)
+            content.setOnClickListener {
+                onInteractionListener.onOpenPost(post)
+            }
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)

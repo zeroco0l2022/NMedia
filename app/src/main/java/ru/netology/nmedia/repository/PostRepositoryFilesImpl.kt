@@ -1,13 +1,11 @@
 package ru.netology.nmedia.repository
 
 import android.content.Context
-import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.data.Post
-import ru.netology.nmedia.repository.PostRepositorySharedPrefsImpl.Companion
 
 class PostRepositoryFilesImpl(
     private val context: Context
@@ -27,7 +25,8 @@ class PostRepositoryFilesImpl(
         val file = context.filesDir.resolve(FILENAME)
         if (file.exists()) {
             context.openFileInput(FILENAME).bufferedReader().use {
-                posts = ru.netology.nmedia.repository.PostRepositoryFilesImpl.gson.fromJson(it,
+                posts = ru.netology.nmedia.repository.PostRepositoryFilesImpl.gson.fromJson(
+                    it,
                     ru.netology.nmedia.repository.PostRepositoryFilesImpl.typeToken
                 )
                 nextId = (posts.maxOfOrNull { it.id } ?: 0) + 1
@@ -39,6 +38,12 @@ class PostRepositoryFilesImpl(
 
 
     override fun getAll(): LiveData<List<Post>> = data
+    override fun openPost(id: Int) {
+        posts = posts.map {
+            if (it.id != id) it else it.copy(views = it.views+1)
+        }
+        data.value = posts
+    }
 
     override fun likeById(id: Int) {
         posts = posts.map {

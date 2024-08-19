@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/common_spacing"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.FeedFragment">
 
     <ImageView
         android:id="@+id/avatar"
@@ -88,6 +88,8 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginBottom="@dimen/common_spacing"
         android:autoLink="web"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/video"
