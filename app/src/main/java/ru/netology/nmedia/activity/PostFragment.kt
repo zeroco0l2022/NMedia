@@ -26,14 +26,7 @@ class PostFragment : Fragment() {
         val binding = FragmentPostBinding.inflate(inflater, container, false)
         val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
-        var openPostId = 0
-        viewModel.postId.observe(viewLifecycleOwner) {
-            openPostId = it
-        }
-
-
-
-
+        val openPostId = viewModel.postId.value ?: findNavController().navigateUp()
 
         viewModel.data.observe(viewLifecycleOwner) { posts ->
 
