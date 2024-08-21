@@ -11,11 +11,13 @@ interface PostDao {
     @Query("SELECT * FROM PostEntity ORDER BY id DESC")
     fun getAll(): LiveData<List<PostEntity>>
 
-    @Query("""
+    @Query(
+        """
         UPDATE PostEntity SET
                views = views + 1
               WHERE id = :id;
-    """)
+    """
+    )
     fun openPost(id: Int)
 
     @Insert
@@ -27,19 +29,23 @@ interface PostDao {
     fun save(post: PostEntity) =
         if (post.id == 0) insert(post) else updateContentById(post.id, post.content)
 
-    @Query("""
+    @Query(
+        """
         UPDATE PostEntity SET
         shared = shared + 1
         WHERE id = :id
-    """)
+    """
+    )
     fun shareById(id: Int)
 
-    @Query("""
+    @Query(
+        """
         UPDATE PostEntity SET
         likes = likes + CASE WHEN likedByMe THEN -1 ELSE 1 END,
         likedByMe = CASE WHEN likedByMe THEN 0 ELSE 1 END
         WHERE id = :id
-    """)
+    """
+    )
     fun likeById(id: Int)
 
     @Query("DELETE FROM PostEntity WHERE id = :id")

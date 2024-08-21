@@ -22,4 +22,8 @@
     <string name="description_post_save">Save</string>
     <string name="post_author">Post author</string>
     <string name="video" translatable="false">Video</string>
+    <string name="channel_remote_name" translatable="false">Server notifications</string>
+    <string name="channel_remote_description" translatable="false">Notifications from server</string>
+    <string name="notification_user_likes">User %1$s liked %2$s\\\'s post</string>
+    <string name="notification_message">User %1$s published new post:</string>
 </resources>

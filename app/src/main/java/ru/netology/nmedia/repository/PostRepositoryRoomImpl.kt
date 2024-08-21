@@ -15,6 +15,7 @@ class PostRepositoryRoomImpl(
             it.toDto()
         }
     }
+
     override fun openPost(id: Int) {
         dao.openPost(id)
     }

@@ -12,4 +12,6 @@
     <string name="menu_edit">Редактирование</string>
     <string name="description_post_save">Сохранить</string>
     <string name="post_author">Автор поста</string>
+    <string name="notification_user_likes">Пользователь %1$s поставил лайк посту %2$s</string>
+    <string name="notification_message">Пользователь %1$s опубликовал новый пост:</string>
 </resources>
