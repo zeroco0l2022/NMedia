@@ -37,19 +37,21 @@ class FCMService : FirebaseMessagingService() {
             manager.createNotificationChannel(channel)
         }
     }
-/*
 
-*/
-override fun onMessageReceived(message: RemoteMessage) {
+    /*
 
-    message.data[action]?.let {
-        when (Action.valueOf(it)) {
-            Action.LIKE -> handleLike(gson.fromJson(message.data[content], Like::class.java))
-            Action.NEW_POST-> handleNewPost(gson.fromJson(message.data[content], NewPost::class.java))
-            else->return
+    */
+    override fun onMessageReceived(message: RemoteMessage) {
+        message.data[action]?.let {
+            if (Action.valueOf(it) == Action.LIKE) {
+                handleLike(gson.fromJson(message.data[content], Like::class.java))
+            }
+            if (Action.valueOf(it) == Action.NEW_POST) {
+                handleNewPost(gson.fromJson(message.data[content], NewPost::class.java))
+            }
+
         }
     }
-}
 
 
     private fun handleNewPost(post: NewPost) {
@@ -72,8 +74,10 @@ override fun onMessageReceived(message: RemoteMessage) {
                 )
             )
             .setContentText(post.content)
-            .setStyle(NotificationCompat.BigTextStyle()
-                .bigText(post.content))
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(post.content)
+            )
             .setContentIntent(resultPendingIntent)
             .setAutoCancel(true)
 
